@@ -1,25 +1,17 @@
-import java.util.*;
-
 class Solution {
     public int getSecondLargest(int[] arr) {
-        int n = arr.length;
-        
-        ArrayList<Integer> list = new ArrayList<>();
-        
-        for(int x : arr){
-            list.add(x);
-        }
-        
-        Collections.sort(list);
-        
-        int largest = list.get(n-1);
-        
-        for(int i = n-2; i >= 0; i--){
-            if(list.get(i) != largest){
-                return list.get(i);
+        int first=arr[0];
+        int second=-1;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>first){
+                second=first;
+                first=arr[i];
             }
+            else if(arr[i]>second&&arr[i]!=first){
+                second=arr[i];
+            }
+            
         }
-        
-        return -1;
+        return second;
     }
 }
