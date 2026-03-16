@@ -1,0 +1,18 @@
+import java.util.*;
+
+class Solution {
+    ArrayList<Integer> removeDuplicates(int[] arr) {
+        
+        HashSet<Integer> set = new HashSet<>();
+        ArrayList<Integer> a = new ArrayList<>();
+
+        for(int i = 0; i < arr.length; i++){
+            if(!set.contains(arr[i])){
+                a.add(arr[i]);
+                set.add(arr[i]);
+            }
+        }
+
+        return a;
+    }
+}
