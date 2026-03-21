@@ -1,25 +1,28 @@
 class Solution {
     static ArrayList<Integer> subarraySum(int[] arr, int target) {
-        ArrayList<Integer> a = new ArrayList<>();
-        
-        int start = 0, sum = 0;
 
-        for (int end = 0; end < arr.length; end++) {
-            sum += arr[end];
+        ArrayList<Integer> result = new ArrayList<>();
 
-            while (sum > target) {
-                sum -= arr[start];
-                start++;
+        int l = 0;
+        int sum = 0;
+
+        for(int r = 0; r < arr.length; r++){
+
+            sum += arr[r];
+
+            while(sum > target){
+                sum -= arr[l];
+                l++;
             }
 
-            if (sum == target) {
-                a.add(start + 1);
-                a.add(end + 1);
-                return a;
+            if(sum == target){
+                result.add(l+1);
+                result.add(r+1);
+                return result;
             }
         }
 
-        a.add(-1);
-        return a;
+        result.add(-1);
+        return result;
     }
 }
